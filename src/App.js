@@ -6,12 +6,12 @@ import TextForm from './Components/TextForm';
 import { useState } from "react";
 import Alert from './Components/Alert';
 import React from "react";
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from "react-router-dom";
-// import About from './Components/About';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import About from './Components/About';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -28,9 +28,6 @@ function App() {
     }, 1500);
   }
   const toggleall = () => {
-    // console.log(cls);
-    // removeclasses();
-    // document.body.classList.add('bg-' + cls)
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "#191970";
@@ -47,25 +44,22 @@ function App() {
   }
   return (
     <>
-
-
-
-      {/* <Router> */}
+      <Router>
         <Navbar title="JD classes" mode={mode} toggleall={toggleall} btn={btn} />
         <Alert alert={alert} />
         <div className="container">
-          {/* <Switch>
-            <Route exact path="/about"> */}
-              {/* <About /> */}
-            {/* </Route>
-            <Route exact path="/"> */}
+          <Switch>
+            <Route exact path="/about">
+              <About mode={mode}/>
+            </Route>
+            <Route exact path="/">
               <TextForm showalert={showalert} heading="This is a text box you can write here" mode={mode} />
-            {/* </Route> */}
+            </Route>
 
 
-          {/* </Switch> */}
+          </Switch>
         </div>
-      {/* </Router> */}
+      </Router>
 
     </>
   );
